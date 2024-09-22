@@ -1,50 +1,10 @@
-# React + TypeScript + Vite
+## https://testovoe-4.vercel.app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Постановка задачи.
+Имеется некая система, которая обрабатывает авиаперелёты. Перелёт — это перевозка пассажира из одной точки в другую с возможными промежуточными посадками. Перелёт можно представить как набор из одного или нескольких элементарных перемещений, называемых сегментами.
+Вам нужно сверстать и отрисовать страницу результатов поиска перелётов. Пример страницы представлен во вложении.  На странице помимо карточек перелётов должен присутствовать блок с фильтрами и сортировками. Фильтрация и сортировка должна происходить без перезагрузки страницы.
+К заданию прилагается mock-файл со списком перелётов, а также общий вид макета страницы с перечнем фильтров и блоком сортировки.
+Обращаем внимание, что фильтры по пересадкам и авиакомпаниям должны строиться на основании данных mock-файла. Дополнительно, по возможности, предусмотрите фасетную фильтрацию с динамическим состоянием фильтров (к примеру, при выбранном фильтре «без пересадок» фильтры авиакомпаний, для которых таких перелетов нет, становятся неактивными).
+Вы можете использовать любой фреймворк на ваше усмотрение или чистый JS.
+Мы не накладываем ограничений на поддержку браузеров.
