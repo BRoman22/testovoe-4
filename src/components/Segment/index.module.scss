@@ -1,0 +1,53 @@
+.destination {
+  padding: 15px 0;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 400;
+
+  .text {
+    color: var(--system-blue);
+  }
+
+  .destination__direction {
+    padding: 0 10px 10px;
+    margin: 0 10px;
+    border-bottom: 1px solid #d4d4d4;
+  }
+
+  .destination__time {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 20px;
+  }
+
+  .destination__transfers {
+    position: relative;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+
+    .transfers__divider {
+      border: none;
+      border-top: 1px solid #d4d4d4;
+      width: calc(100% - 100px);
+      margin: 0 50px;
+      position: absolute;
+      top: 50%;
+    }
+
+    .transfers__text {
+      position: absolute;
+      background-color: white;
+      color: var(--system-orange);
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 400;
+      padding: 0 10px;
+    }
+  }
+
+  .destination__carrier {
+    display: block;
+    margin: 10px 20px 0;
+  }
+}

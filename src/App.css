@@ -1,0 +1,26 @@
+#root {
+  display: flex;
+}
+
+main {
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 290px 700px;
+  gap: 20px;
+}
+
+.cardlist {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.button {
+  border: 1px solid var(--system-blue);
+  background-color: var(--system-blue);
+  color: white;
+  padding: 5px 30px;
+  width: fit-content;
+  margin: auto;
+  cursor: pointer;
+}

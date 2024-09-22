@@ -1,0 +1,19 @@
+.item {
+  margin-bottom: 20px;
+}
+
+.title {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.label {
+  display: flex;
+  gap: 6px;
+  cursor: pointer;
+
+  input {
+    cursor: pointer;
+  }
+}
