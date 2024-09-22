@@ -24,6 +24,11 @@ const Filters: React.FC<FiltersProps> = ({
   const { sorting, transfers, airlines } = filters;
   const [state, setState] = useState({ min: '', max: '' });
 
+  const isDisabledAirline = (uid: string) =>
+    !filteredData.some(i => i.flight.carrier.uid === uid);
+  const isDisabledTransfer = (item: number) =>
+    !getUniqueTransfers(filteredData).includes(item);
+
   const handleSortingChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setFilters({ ...filters, sorting: e.target.value });
 
@@ -95,9 +100,11 @@ const Filters: React.FC<FiltersProps> = ({
               checked={transfers.includes(transfer)}
               value={transfer}
               onChange={handleTransferChange}
-              disabled={!getUniqueTransfers(filteredData).includes(transfer)}
+              disabled={isDisabledTransfer(transfer)}
             />
-            <span>
+            <span
+              className={isDisabledTransfer(transfer) ? styles.disabled : ''}
+            >
               {transfer
                 ? `- ${getEndingTransfers(transfer)}`
                 : '- без пересадок'}
@@ -137,11 +144,13 @@ const Filters: React.FC<FiltersProps> = ({
               checked={airlines.includes(item.uid)}
               value={item.uid}
               onChange={() => handleAirlinesChange(item.uid)}
-              disabled={
-                !filteredData.find(i => i.flight.carrier.uid === item.uid)
-              }
+              disabled={isDisabledAirline(item.uid)}
             />
-            <span>{item.caption}</span>
+            <span
+              className={isDisabledAirline(item.uid) ? styles.disabled : ''}
+            >
+              {item.caption}
+            </span>
           </label>
         ))}
       </li>

@@ -106,6 +106,7 @@ const filterByPrice = (data: Flight[], filters: IFilters) => {
 
 const filterByTransfers = (data: Flight[], filters: IFilters): Flight[] => {
   if (!filters.transfers.length) return data;
+
   return data.filter(flight => {
     const transfers = flight.flight.legs.reduce(
       (acc, leg) => acc + leg.segments.length - 1,
