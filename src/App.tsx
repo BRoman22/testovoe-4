@@ -38,7 +38,6 @@ function App() {
 
   useEffect(() => {
     const dataByAirlines = filterByAirlines(filteredData, filters);
-
     setResultData(dataByAirlines);
   }, [filters.airlines]);
 
