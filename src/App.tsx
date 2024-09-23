@@ -15,6 +15,7 @@ function App() {
   const mockData = mock as Root;
 
   const [filteredData, setFilteredData] = useState<Flight[]>([]);
+  const [resultData, setResultData] = useState<Flight[]>([]);
   const [showMore, setShowMore] = useState(2);
 
   const [filters, setFilters] = useState<IFilters>({
@@ -30,10 +31,16 @@ function App() {
     const dataBySorting = filterBySorting(data, filters);
     const dataByTransfers = filterByTransfers(dataBySorting, filters);
     const dataByPrice = filterByPrice(dataByTransfers, filters);
-    const dataByAirlines = filterByAirlines(dataByPrice, filters);
 
-    setFilteredData(dataByAirlines);
-  }, [filters]);
+    setFilteredData(dataByPrice);
+    setResultData(dataByPrice);
+  }, [filters.sorting, filters.transfers, filters.price]);
+
+  useEffect(() => {
+    const dataByAirlines = filterByAirlines(filteredData, filters);
+
+    setResultData(dataByAirlines);
+  }, [filters.airlines]);
 
   return (
     <main>
@@ -42,14 +49,15 @@ function App() {
         setFilters={setFilters}
         initialData={mockData.result.flights}
         filteredData={filteredData}
+        resultData={resultData}
       />
       <div className="cardlist">
-        {filteredData.length ? (
+        {resultData.length ? (
           <>
-            {filteredData.slice(0, showMore).map(flight => (
+            {resultData.slice(0, showMore).map(flight => (
               <Card flight={flight} key={flight.flightToken} />
             ))}
-            {showMore < filteredData.length && (
+            {showMore < resultData.length && (
               <button
                 className="button"
                 onClick={() => setShowMore(showMore + 1)}

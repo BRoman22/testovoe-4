@@ -13,6 +13,7 @@ interface FiltersProps {
   setFilters: React.Dispatch<React.SetStateAction<IFilters>>;
   initialData: Flight[];
   filteredData: Flight[];
+  resultData: Flight[];
 }
 
 const Filters: React.FC<FiltersProps> = ({
@@ -20,14 +21,15 @@ const Filters: React.FC<FiltersProps> = ({
   setFilters,
   initialData,
   filteredData,
+  resultData,
 }) => {
   const { sorting, transfers, airlines } = filters;
   const [state, setState] = useState({ min: '', max: '' });
 
   const isDisabledAirline = (uid: string) =>
-    !filteredData.some(i => i.flight.carrier.uid === uid);
+    !filteredData.find(i => i.flight.carrier.uid === uid);
   const isDisabledTransfer = (item: number) =>
-    !getUniqueTransfers(filteredData).includes(item);
+    !getUniqueTransfers(resultData).includes(item);
 
   const handleSortingChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setFilters({ ...filters, sorting: e.target.value });
